@@ -1,0 +1,14 @@
+{
+  "name": "probable-invention",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "wooga booga",
+  "action": {
+    "default_title": "Click to view a popup",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "nativeMessaging"
+  ],
+  "incognito": "split"
+}

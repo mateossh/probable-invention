@@ -1,0 +1,9 @@
+{
+    "name": "probable_invention",
+    "description": "chrome native messaging thingies for work",
+    "path": "/Users/matt/Code/probable-invention/native-application/probable-invention",
+    "type": "stdio",
+    "allowed_origins": [
+        "chrome-extension://pcapchjkimhkfeplkeldjmfblbnbpijl/"
+    ]
+}
