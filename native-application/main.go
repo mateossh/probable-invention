@@ -28,6 +28,7 @@ var bufferSize = 8192
 // IncomingMessage represents a message sent to the native host.
 type IncomingMessage struct {
 	Query string `json:"query"`
+	Payload string `json:"payload,omitempty"`
 }
 
 // OutgoingMessage respresents a response to an incoming message query.
@@ -126,6 +127,9 @@ func parseMessage(msg []byte) {
 	}
 
 	switch iMsg.Query {
+  case "something":
+    oMsg.Query = "openTab"
+    oMsg.Response = "https://mateossh.me"
 	case "wooga":
 		oMsg.Response = "booga"
 	case "ping":

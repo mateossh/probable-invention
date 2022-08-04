@@ -6,13 +6,23 @@ function appendMessage(text) {
 }
 
 function sendMessage() {
-  message = {'query': document.getElementById('input-text').value.trim()};
+  const query = document.getElementById('query-input').value.trim();
+  const payload = document.getElementById('payload-input').value.trim();
+
+  message = {
+    query,
+    payload,
+  }
   connection.postMessage(message);
   appendMessage(`Sent message: <pre>${JSON.stringify(message, null, 2)}</pre>`);
 }
 
 function onMessage(message) {
   appendMessage(`Received message: <pre>${JSON.stringify(message, null, 2)}</pre>`);
+
+  if (message.query === 'openTab') {
+    alert('woohooo openTab !!!!!');
+  }
 }
 
 function onDisconnected() {
