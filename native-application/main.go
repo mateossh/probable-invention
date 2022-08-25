@@ -7,9 +7,12 @@ import (
 	"encoding/json"
 	"io"
 	"os"
-	"unsafe"
 
+	"unsafe"
+  // "fmt"
+  
   "probable-invention/logger"
+  "probable-invention/utils"
 )
 
 
@@ -29,9 +32,6 @@ type IncomingMessage struct {
 type OutgoingMessage struct {
 	Query    string `json:"query"`
 	Response string `json:"response"`
-}
-
-func Init(traceHandle io.Writer, errorHandle io.Writer) {
 }
 
 
@@ -57,6 +57,23 @@ func parseMessage(msg []byte) {
 	}
 
 	switch iMsg.Query {
+  case "openFiles":
+    path := iMsg.Payload
+
+    files := utils.GetFiles(path)
+    response := string("[")
+
+    for index, file := range files {
+      if index < len(files) - 1 {
+        response = response + "\"" + file + "\", " 
+      } else {
+        response = response + "\"" + file + "\" " 
+      }
+    }
+    response = response + "]"
+
+    oMsg.Query = "openFiles"
+    oMsg.Response = response
   case "something":
     oMsg.Query = "openTab"
     oMsg.Response = "https://mateossh.me"
@@ -164,4 +181,9 @@ func main() {
 	logger.Trace.Printf("Chrome native messaging host started. Native byte order: %v.", nativeEndian)
 	read()
 	logger.Trace.Print("Chrome native messaging host exited.")
+
+  // files := utils.GetFiles("/Users/matt/Code/personal/probable-invention")
+  // for _, file := range files {
+  //   fmt.Println(file)
+  // }
 }
