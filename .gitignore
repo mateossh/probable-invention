@@ -18,3 +18,13 @@
 go.work
 
 *.log
+**/log.txt
+
+*.DS_Store
+*.excalidraw
+
+# Directories with "-test" suffix
+*-test/
+
+# Native App binary file
+native-application/probable-invention
