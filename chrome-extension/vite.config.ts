@@ -10,6 +10,7 @@ export default defineConfig({
         },
     },
     build: {
+        minify: false,
         rollupOptions: {
             input: "src/manifest.json"
         }

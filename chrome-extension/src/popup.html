@@ -11,25 +11,45 @@
     </style>
   </head
   <body>
-    <button id="connect-button">Connect</button>
     <div>
-      <input
-        id="query-input"
-        type="text"
-        style="width: 200px"
-        placeholder="query"
-      />
-
-      <input
-        id="payload-input"
-        type="text"
-        style="width: 200px"
-        placeholder="payload"
-      />
-
-      <button id="send-message-button">Send</button>
-
+      <p>Step 1. Connect to native host</p>
+      <button id="connect-button">Connect</button>
     </div>
+
+    <div>
+      <p>Step 2. Open files (has to be connected to native host)</p>
+      <input
+        id="path-input"
+        type="text"
+        style="width: 200px"
+        placeholder="path"
+        disabled
+      />
+      <button id="open-files-button" disabled>Open files</button>
+    </div>
+
+    <div>
+      <p>Step 3. Sort tabs</p>
+      <button id="sort-tabs-button">Sort tabs</button>
+    </div>
+
+    <!-- <div> -->
+    <!--   <input -->
+    <!--     id="query-input" -->
+    <!--     type="text" -->
+    <!--     style="width: 200px" -->
+    <!--     placeholder="query" -->
+    <!--   /> -->
+    <!---->
+    <!--   <input -->
+    <!--     id="payload-input" -->
+    <!--     type="text" -->
+    <!--     style="width: 200px" -->
+    <!--     placeholder="payload" -->
+    <!--   /> -->
+    <!--   <button id="send-message-button">Send</button> -->
+    <!-- </div> -->
+    <!-- <hr /> -->
     <div id="response"></div>
   </body>
 </html>
