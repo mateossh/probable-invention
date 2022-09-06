@@ -22,6 +22,43 @@ there's room for further "probable" improvement:
 - I can (I think) create GUI app to control active tab/zoom etc. without focusing Google Chrome window
 - inject CSS to hide controls in Chrome's PDF viewer (is this even possible?)
 
+### Installation (on Windows)
+
+1. Go to releases and download app.exe and extension.zip
+2. Install Chrome extension
+
+    1. Extract extension.zip
+    2. Open "chrome://extensions" in Chrome
+    3. Enable "developer mode"
+    4. Click "Load unpacked" and select directory with extracted extension
+    5. Copy ID (you will use this value in manifest.json later)
+
+3. Create Chrome Native Messaging manifest
+
+    1. Create manifest.json somewhere with following content
+    ```json
+    {
+      "name": "probable_invention",
+      "description": "probable invention",
+      "path": "C:\\path\\to\\downloaded\\probable_invention.exe",
+      "type": "stdio",
+      "allowed_origins": [
+        "chrome-extension://<insert_id_here>/"
+      ]
+    }
+    ```
+    2. Change `path` and replace `<insert_id_here>` with value copied in 2.5
+
+4. Add registry key
+
+    1. Create .reg file with content
+    ```reg
+    Windows Registry Editor Version 5.00
+    [HKEY_CURRENT_USER\Software\Google\Chrome\NativeMessagingHosts\probable_invention]
+    @="C:\\path\\to\\created\\manifest.json"
+    ```
+    2. Double-click it
+
 
 ### development
 
