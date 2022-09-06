@@ -1,11 +1,11 @@
-name: Go Build Windows
+name: Build native application and Chrome Extension
 
 on: workflow_dispatch
 
 jobs:
 
-  build-native-application:
-    runs-on: ubuntu-latest
+  build-native:
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
 
@@ -14,18 +14,14 @@ jobs:
       with:
         go-version: 1.18
 
-    - name: Setup Go environment
-      uses: actions/setup-go@v3.3.0
-      env:
-        GOOS: windows
-        GOARCH: amd64
+    - name: Build native application
+      run: go build
+      working-directory: ./native-application
 
-    # - name: Build native application
-    #   working-directory: native-application
-    #   uses: thatisuday/go-cross-build@v1
-    #   with:
-    #     platforms: 'windows/amd64'
 
+  build-extension:
+    runs-on: ubuntu-latest
+    steps:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -33,11 +29,6 @@ jobs:
 
     - name: Install zip
       uses: montudor/action-zip@v1
-
-
-    # - name: Build native application
-    #   run: go build
-    #   working-directory: ./native-application
 
     - name: Build chrome extension
       working-directory: chrome-extension
@@ -50,11 +41,18 @@ jobs:
       working-directory: chrome-extension
       run: zip -qq -r extension.zip dist
 
+    # - name: Create release on GitHub
+    #   uses: softprops/action-gh-release@v1
+    #   with:
+    #     draft: true
+    #     files: |
+    #       native-application/probable-invention.exe
+    #       chrome-extension/extension.zip
 
 
-
-###########################################################
-
+  create-draft-release:
+    runs-on: ubuntu-latest
+    steps:
     - name: Create release on GitHub
       uses: softprops/action-gh-release@v1
       with:
