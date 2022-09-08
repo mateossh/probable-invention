@@ -2,8 +2,9 @@ package utils
 
 import (
 	"io/ioutil"
-  "log"
-  "path"
+	"log"
+	"path/filepath"
+	"strings"
 )
 
 func GetFiles(p string) []string {
@@ -16,15 +17,15 @@ func GetFiles(p string) []string {
 
   for _, file := range files {
     if !file.IsDir() {
-      absolutePath := path.Join(p, file.Name())
-      result = append(result, absolutePath)
+      fileAbsolutePath := filepath.Join(p, file.Name())
+
+      // handling Windows paths
+      if string(fileAbsolutePath[1]) == ":" {
+        fileAbsolutePath = strings.ReplaceAll(fileAbsolutePath, "\\", "\\\\")
+      }
+
+      result = append(result, fileAbsolutePath)
     }
   }
   return result
 }
-
-
-// files := utils.GetFiles("/Users/matt/Code/personal/probable-invention")
-// for _, file := range files {
-//   fmt.Println(file)
-// }
