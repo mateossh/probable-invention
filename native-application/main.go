@@ -10,9 +10,9 @@ import (
 	"os"
 
 	"unsafe"
-  // "fmt"
-  
-  "probable-invention/utils"
+	// "fmt"
+
+	"probable-invention/utils"
 )
 
 // constants for Logger
@@ -31,7 +31,7 @@ var bufferSize = 8192
 
 // IncomingMessage represents a message sent to the native host.
 type IncomingMessage struct {
-	Query string `json:"query"`
+	Query   string `json:"query"`
 	Payload string `json:"payload,omitempty"`
 }
 
@@ -131,26 +131,26 @@ func parseMessage(msg []byte) {
 	}
 
 	switch iMsg.Query {
-  case "openFiles":
-    path := iMsg.Payload
+	case "openFiles":
+		path := iMsg.Payload
 
-    files := utils.GetFiles(path)
-    response := string("[")
+		files := utils.GetFiles(path)
+		response := string("[")
 
-    for index, file := range files {
-      if index < len(files) - 1 {
-        response = response + "\"" + file + "\", " 
-      } else {
-        response = response + "\"" + file + "\" " 
-      }
-    }
-    response = response + "]"
+		for index, file := range files {
+			if index < len(files)-1 {
+				response = response + "\"" + file + "\", "
+			} else {
+				response = response + "\"" + file + "\" "
+			}
+		}
+		response = response + "]"
 
-    oMsg.Query = "openFiles"
-    oMsg.Response = response
-  case "something":
-    oMsg.Query = "openTab"
-    oMsg.Response = "https://mateossh.me"
+		oMsg.Query = "openFiles"
+		oMsg.Response = response
+	case "something":
+		oMsg.Query = "openTab"
+		oMsg.Response = "https://mateossh.me"
 	case "wooga":
 		oMsg.Response = "booga"
 	case "ping":
