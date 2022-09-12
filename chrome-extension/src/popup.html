@@ -5,8 +5,12 @@
     <style>
       html {
         min-height: 300px;
-        min-width: 250px;
+        width: 300px;
         background: salmon;
+      }
+      #response {
+        height: 200px;
+        overflow: scroll;
       }
     </style>
   </head
@@ -50,6 +54,9 @@
     <!--   <button id="send-message-button">Send</button> -->
     <!-- </div> -->
     <!-- <hr /> -->
-    <div id="response"></div>
+    <div style="margin: 12px 0 0 0;">
+      <p>Scrollable log:</p>
+      <div id="response"></div>
+    </div>
   </body>
 </html>

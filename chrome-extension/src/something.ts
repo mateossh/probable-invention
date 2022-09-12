@@ -62,6 +62,9 @@ function connect() {
 
     document.getElementById('path-input')!
             .toggleAttribute('disabled');
+
+    document.getElementById('connect-button')!
+            .toggleAttribute('disabled');
   }
 }
 
