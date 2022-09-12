@@ -9,6 +9,7 @@ interface Message {
   query: string
   payload?: string
   response?: string
+  isError: boolean
 }
 
 // function sendMessage() {
@@ -24,6 +25,11 @@ interface Message {
 // }
 
 function onMessage(message: Message) {
+  if (message.isError) {
+    appendMessage(`Error: ${message.response}`)
+    return;
+  }
+
   if (message.query === 'openFiles') {
     openFiles(JSON.parse(message.response!));
   }

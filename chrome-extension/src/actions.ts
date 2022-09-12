@@ -1,6 +1,6 @@
 import { appendMessage } from './log'
 
-export function openFiles(files: string) {
+export function openFiles(files: unknown[]) {
   for (let file of files) {
     chrome.tabs.create({
       url: `file://${file}`

@@ -28,6 +28,7 @@ type IncomingMessage struct {
 type OutgoingMessage struct {
 	Query    string `json:"query"`
 	Response string `json:"response"`
+	IsError  bool   `json:"isError"`
 }
 
 // read Creates a new buffered I/O reader and reads messages from Stdin.

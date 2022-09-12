@@ -2,18 +2,17 @@ package utils
 
 import (
 	"io/ioutil"
-	"log"
 	"path/filepath"
 	"strings"
 )
 
 func GetFiles(p string) []string {
+	result := make([]string, 0)
+
 	files, err := ioutil.ReadDir(p)
 	if err != nil {
-		log.Fatal(err)
+		return result
 	}
-
-	result := make([]string, 0)
 
 	for _, file := range files {
 		if !file.IsDir() {

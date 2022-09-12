@@ -8,6 +8,14 @@ func OpenFiles(iMsg IncomingMessage) OutgoingMessage {
 	path := iMsg.Payload
 
 	files := utils.GetFiles(path)
+	if len(files) == 0 {
+		return OutgoingMessage{
+			Query:    "openFiles",
+			IsError:  true,
+			Response: "invalid path",
+		}
+	}
+
 	response := string("[")
 
 	for index, file := range files {
