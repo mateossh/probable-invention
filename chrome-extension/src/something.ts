@@ -1,7 +1,7 @@
 import { appendMessage } from './log';
 import { openFiles, sortTabs } from './actions';
 
-const hostName = 'probable_invention';
+const hostName = 'com.mateossh.probable_invention';
 let connection: chrome.runtime.Port | null = null;
 
 

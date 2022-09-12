@@ -38,7 +38,7 @@ there's room for further "probable" improvement:
     1. Create manifest.json somewhere with following content
     ```json
     {
-      "name": "probable_invention",
+      "name": "com.mateossh.probable_invention",
       "description": "probable invention",
       "path": "C:\\path\\to\\downloaded\\probable_invention.exe",
       "type": "stdio",
@@ -54,7 +54,7 @@ there's room for further "probable" improvement:
     1. Create .reg file with content
     ```reg
     Windows Registry Editor Version 5.00
-    [HKEY_CURRENT_USER\Software\Google\Chrome\NativeMessagingHosts\probable_invention]
+    [HKEY_CURRENT_USER\Software\Google\Chrome\NativeMessagingHosts\com.mateossh.probable_invention]
     @="C:\\path\\to\\created\\manifest.json"
     ```
     2. Double-click it
