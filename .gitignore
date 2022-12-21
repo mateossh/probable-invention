@@ -17,7 +17,9 @@
 # Go workspace file
 go.work
 
+*.txt
 *.log
+**/*.txt
 **/log.txt
 
 *.DS_Store
