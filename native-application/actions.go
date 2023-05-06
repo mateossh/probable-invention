@@ -1,6 +1,7 @@
 package main
 
 import (
+	"probable-invention/logger"
 	"probable-invention/utils"
 )
 
@@ -26,6 +27,8 @@ func OpenFiles(iMsg IncomingMessage) OutgoingMessage {
 		}
 	}
 	response = response + "]"
+
+	logger.Trace.Printf("OpenFiles response= %v", response)
 
 	return OutgoingMessage{
 		Query:    "openFiles",
