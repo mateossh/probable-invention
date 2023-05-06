@@ -4,7 +4,6 @@ import { openFiles, sortTabs } from './actions';
 const hostName = 'com.mateossh.probable_invention';
 let connection: chrome.runtime.Port | null = null;
 
-
 interface Message {
   query: string
   payload?: string
