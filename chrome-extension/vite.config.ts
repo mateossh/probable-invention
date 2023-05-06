@@ -1,21 +1,9 @@
-import { defineConfig } from "vite";
-import { resolve } from "path";
-import { chromeExtension } from "vite-plugin-chrome-extension";
+import { crx } from '@crxjs/vite-plugin';
+import { defineConfig } from 'vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import manifest from './manifest.json';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    resolve: {
-        alias: {
-            "@": resolve(__dirname, "src"),
-        },
-    },
-    build: {
-        minify: false,
-        rollupOptions: {
-            input: "src/manifest.json"
-        }
-    },
-    plugins: [
-        chromeExtension()
-    ],
-})
+  plugins: [svelte(), crx({ manifest })],
+});

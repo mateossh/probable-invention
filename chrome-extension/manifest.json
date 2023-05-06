@@ -5,11 +5,8 @@
   "description": "wooga booga",
   "action": {
     "default_title": "Click to view a popup",
-    "default_popup": "popup.html"
+    "default_popup": "src/popup/popup.html"
   },
-  "permissions": [
-    "nativeMessaging",
-    "tabs"
-  ],
+  "permissions": ["nativeMessaging", "tabs"],
   "incognito": "split"
 }
